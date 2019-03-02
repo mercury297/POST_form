@@ -19,15 +19,15 @@ var form = document.querySelector('form');
             event.preventDefault();
             console.log("Form");
             console.log($("#latitude").val());
-                fetch('http://192.168.43.171:3000/officers/add',
+                fetch('https://availo-api.herokuapp.com/officers/add',
                 {
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json",
                         "Accept":"application/json"
                     },
-                    mode:"no-cors",
-                    origin:"*",
+                    // mode:"no-cors",
+                    // origin:"*",
                     body : JSON.stringify({
                         officeLocation:{
                             latitude:$("#latitude").val(),
@@ -37,12 +37,14 @@ var form = document.querySelector('form');
                             startTime:new Date(0,0,0,$("#startTime").val().substring(0,2),$("#startTime").val().substring(3),0),
                             endTime:new Date(0,0,0,$("#endTime").val().substring(0,2),$("#endTime").val().substring(3),0)
                         },
+                            address:$("#address").val(),
+                            phoneNo : $("#number").val(),
                             name:$("#name").val(),
                             email:$('#email').val(),
                             designation:$('#designation').val(),
                             password : $('#password').val(),
                             department:$("#department").val(),
-                            status:$("#status").val(),
+                            status:"avl",
                             phoneExtension:$("#phoneExtension").val(),
                             description:$("#description").val()
                         })
