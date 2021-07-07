@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Form</title>
+    <title>Admin Form</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=YOURAPIpls  &callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABPbaU11DPf0IaP5tK7EUSzECqkoCNQfs&callback=initMap">
     </script>
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -46,7 +46,7 @@
             <fieldset>
                 
             
-                <!-- <input type="text" id="user_location" name="user_location" class="register-form__location-holder"> <a href="#" class="button button--small register-wizard__map-search-button">Search adr.</a> -->
+                <input type="text" id="user_location" name="user_location" class="register-form__location-holder"> <a href="#" class="button button--small register-wizard__map-search-button">Search adr.</a>
                 <div style="width:100%;height:300px" id="register-form__map" class="register-form__map register-form__map--user"></div>
                 lat: <input id="latitude" name="user_latitude" value="" class="register-form__latitude-holder">
                 long: <input id="longitude" name="user_longitude" value="" class="register-form__longitude-holder">
@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <label>Address</label>
-                    <textarea name="address" class="form-control" placeholder="address"></textarea>
+                    <textarea id = "address" name="address" class="form-control" placeholder="address"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Designation</label>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label>Job description</label>
-                        <textarea name="description" class="form-control" placeholder="Areas of work... "></textarea>
+                        <textarea id="description" name="description" class="form-control" placeholder="Areas of work... "></textarea>
                     </div>
                     <div class="form-group">
                         <label>Extension</label>
@@ -154,11 +154,69 @@
         let lat, long;
         // init map 28.5358315,77.1544826
         function initMap() {    
+        //  lat = 28.5358315;
+        //  long = 77.1544826;
+        // $('.register-form__latitude-holder').val(lat);
+        // $('.register-form__longitude-holder').val(long);
+        //   var center = new google.maps.LatLng(parseFloat(lat), long);
+        //     var mapOptions = {center: center, zoom: 16, scrollwheel: false};
+        //     map = new google.maps.Map(document.getElementById("register-form__map"), mapOptions);
+        //     marker = new google.maps.Marker({position: new google.maps.LatLng(lat, long), draggable:true, map: map,title: 'Test'});
+        //         google.maps.event.addListener(marker, 'dragend', function (event) {
+        //             lat = this.getPosition().lat();
+        //             long = this.getPosition().lng();
+        //             // initMap(lat, long);
+        //             console.log('dragged pointer');
+        //             $('.register-form__latitude-holder').val(lat);
+        //             $('.register-form__longitude-holder').val(long);
+        //         });     
+        //     }
+        // /**
+        //  * Geocode when user location input changes
+        //  */
+        // $('body').on('change', '.register-form__location-holder', function(e) {
+        //     var address = $(this).val();
+        //     console.log(address);
+        //     var geocoder = new google.maps.Geocoder();
+        //     if (geocoder) {
+        //         geocoder.geocode({ 'address': address }, function (results, status) {
+        //             if (status == google.maps.GeocoderStatus.OK) {
+        //                 console.log(results[0].geometry.location);
+        //                 lat = results[0].geometry.location.lat();
+        //                 long = results[0].geometry.location.lng();
+        //                 var center = new google.maps.LatLng(parseFloat(lat), long);
+        //                 var mapOptions = {center: center, zoom: 16, scrollwheel: false};
+        //                 map = new google.maps.Map(document.getElementById("register-form__map"), mapOptions);
+        //                 marker = new google.maps.Marker({position: new google.maps.LatLng(lat, long), draggable:true, map: map,title: 'Test'});
+        //                 console.log("lat="+lat);
+        //                 console.log("long=" + long);
+        //                 google.maps.event.addListener(marker, 'dragend', function (event) {
+        //                     lat = this.getPosition().lat();
+        //                     long = this.getPosition().lng();
+        //                     // initMap(lat, long);
+        //                     console.log('dragged pointer');
+        //                     $('.register-form__latitude-holder').val(lat);
+        //                     $('.register-form__longitude-holder').val(long);
+        //                 });     
+        //                 //initMap(lat, long);
+        //                 $('.register-form__latitude-holder').val(lat);
+        //                 $('.register-form__longitude-holder').val(long);
+        //             }
+        //             else {
+        //                 alert("Kunne ikke finne denne adressen, vennligst skriv en i nærheten og dra pin'en på kartet nærmest mulig riktig posisjon.");
+        //                 $('.register-form__latitude-holder').focus().select();
+        //             }
+        //         });
+        //     }
+        // });
+                                
+         // lat = $('.register-form__latitude-holder').val();
+         // long = $('.register-form__longitude-holder').val();
          lat = 28.5358315;
          long = 77.1544826;
-        $('.register-form__latitude-holder').val(lat);
-        $('.register-form__longitude-holder').val(long);
-          var center = new google.maps.LatLng(parseFloat(lat), long);
+          $('.register-form__latitude-holder').val(lat);
+                    $('.register-form__longitude-holder').val(long);
+         var center = new google.maps.LatLng(parseFloat(lat), long);
             var mapOptions = {center: center, zoom: 16, scrollwheel: false};
             map = new google.maps.Map(document.getElementById("register-form__map"), mapOptions);
             marker = new google.maps.Marker({position: new google.maps.LatLng(lat, long), draggable:true, map: map,title: 'Test'});
@@ -170,11 +228,29 @@
                     $('.register-form__latitude-holder').val(lat);
                     $('.register-form__longitude-holder').val(long);
                 });     
-            }
-        /**
-         * Geocode when user location input changes
-         */
-        $('body').on('change', '.register-form__location-holder', function(e) {
+         }
+            
+                
+          navigator.geolocation.getCurrentPosition(position=>{
+                    // console.log("hi");
+                    lat = position.coords.latitude;
+                    long = position.coords.longitude;
+                    $('.register-form__latitude-holder').val(lat);
+                    $('.register-form__longitude-holder').val(long);
+                    console.log(lat,long);
+                    var center = new google.maps.LatLng(parseFloat(lat), long);
+            var mapOptions = {center: center, zoom: 16, scrollwheel: false};
+                    map = new google.maps.Map(document.getElementById("register-form__map"), mapOptions);
+            marker = new google.maps.Marker({position: new google.maps.LatLng(lat, long), draggable:true, map: map,title: 'Test'});
+                google.maps.event.addListener(marker, 'dragend', function (event) {
+                    lat = this.getPosition().lat();
+                    long = this.getPosition().lng();
+                    // initMap(lat, long);
+                    console.log('dragged pointer');
+                    $('.register-form__latitude-holder').val(lat);
+                    $('.register-form__longitude-holder').val(long);
+                });     
+                    $('body').on('change', '.register-form__location-holder', function(e) {
             var address = $(this).val();
             console.log(address);
             var geocoder = new google.maps.Geocoder();
@@ -212,6 +288,11 @@
                                 
          lat = $('.register-form__latitude-holder').val();
          long = $('.register-form__longitude-holder').val();
+                    
+                },error=>{
+                    console.log(error.code);
+                },{timeout:10000});
+            
                 
     </script>
     <script type="text/javascript" src="app.js"></script>
@@ -219,3 +300,5 @@
  </body>   
 
 </html>
+
+

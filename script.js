@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
     	var progress_line = $(this).parents('form').find('.progress-line');
     	
     	parent_fieldset.find('input[type="text"], input[type="password"], input[type="username"], input[type="email"], input[type="tel"], input[type="url"], textarea').each(function() {
-    		if( $(this).val() == "" ) {
+    		if( $(this).val() == "" && $(this).attr("id") != "user_location") {
     			$(this).addClass('input-error');
     			next_step = false;
     		}
